@@ -1,0 +1,68 @@
+BLOODLINE DISPATCH — UNDER THE SKIN
+Trailer Voiceover Script v2 — REVISED OPEN
+Leads with ticks and boxes. Cal introduced second.
+Approx. 210 words / 85 seconds at measured pace
+================================================
+
+Farmers are finding boxes.
+
+Plain brown cardboard. No markings. No return address.
+Ventilation holes punched in the sides.
+
+And something moving inside.
+
+Hundreds of ticks. Species that have no business being
+in the American midwest. Genetically anomalous.
+Carrying a modified pathogen that no natural tick
+should be able to produce.
+
+Someone put them there.
+
+My name is Cal Morrow. I'm a veterinarian in the Ozark
+highlands of Missouri. I spent six years in pharmaceutical
+research before I walked away from something I wasn't
+supposed to see.
+
+When the animals on my land started dying — I recognized
+what I was looking at.
+
+The money trail goes eleven layers deep. A foundation.
+A subsidiary. A secret project with forty million dollars
+and no public record.
+
+The man funding it has told the world to stop eating
+red meat. He owns more American farmland than any
+private individual in history.
+
+He is also, deeply, pathologically — terrified of ticks.
+
+I took everything I found to Congress.
+
+He walked out of the courthouse without a single charge.
+
+But biology doesn't care about legal immunity.
+
+And the tick doesn't care who you are.
+
+================================================
+DELIVERY NOTES:
+- "Farmers are finding boxes." — dead slow. One word at a time almost.
+- "And something moving inside." — pause before this line. Let it land.
+- "Someone put them there." — flat. Certain. No emotion.
+- "He is also, deeply, pathologically — terrified of ticks." — the dash is a full beat pause.
+- Final two lines — slowest of all. One breath between each.
+
+KEY CHANGES FROM V1:
+- Opens with the boxes/ticks immediately — no introduction first
+- Cal's identity revealed AFTER the hook is set
+- "Terrified of ticks" line added — the irony that drives the finale
+- Shorter overall — tighter for social media retention
+- End card: UNDER THE SKIN (not channel name)
+
+RECOMMENDED VOICES (ElevenLabs):
+- Paul — Friendly Midwestern Storyteller (ALREADY RECORDED — use v1 as reference)
+- Regenerate with this script at elevenlabs.io
+- Same settings: sp95 s50 sb75
+
+PASTE THIS TEXT AT: elevenlabs.io
+================================================

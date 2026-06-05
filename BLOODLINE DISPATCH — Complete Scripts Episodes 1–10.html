@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLOODLINE DISPATCH — Complete Scripts Episodes 1–10</title>
+<link href="./BLOODLINE DISPATCH — Complete Scripts Episodes 1–10_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --blood: #8B0000;
+    --rust: #C0392B;
+    --amber: #D4870A;
+    --parchment: #F2E8D5;
+    --dark: #0D0D0D;
+    --mid: #1A1510;
+    --muted: #5C4A3A;
+    --green: #2D5016;
+    --green-bright: #4A7C20;
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    --body: 'Crimson Pro', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--parchment);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.35;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 900;
+    background: rgba(13,13,13,0.95);
+    border-bottom: 1px solid rgba(139,0,0,0.3);
+    padding: 12px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+  }
+
+  .nav-episodes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .nav-ep {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,74,58,0.3);
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    background: none;
+  }
+
+  .nav-ep:hover {
+    border-color: var(--rust);
+    color: var(--parchment);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 60px 60px;
+    background: linear-gradient(180deg, #0D0D0D 0%, #110D08 100%);
+    border-bottom: 1px solid rgba(139,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: 'BLOODLINE';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: var(--display);
+    font-size: 180px;
+    color: rgba(139,0,0,0.04);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(48px, 8vw, 100px);
+    letter-spacing: 0.05em;
+    line-height: 0.9;
+    color: var(--parchment);
+    margin-bottom: 20px;
+  }
+
+  .hero-sub {
+    font-style: italic;
+    color: rgba(242,232,213,0.5);
+    font-size: 18px;
+    max-width: 600px;
+  }
+
+  /* EPISODE CONTAINER */
+  .episodes {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* EPISODE BLOCK */
+  .episode {
+    margin-bottom: 120px;
+    scroll-margin-top: 80px;
+  }
+
+  .ep-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px;
+    align-items: start;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(92,74,58,0.2);
+  }
+
+  .ep-number {
+    font-family: var(--display);
+    font-size: 96px;
+    line-height: 0.85;
+    color: rgba(139,0,0,0.2);
+    letter-spacing: -0.02em;
+  }
+
+  .ep-meta {}
+
+  .ep-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ep-label::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--rust);
+    opacity: 0.4;
+  }
+
+  .ep-title {
+    font-family: var(--display);
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: 0.05em;
+    color: var(--parchment);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .ep-logline {
+    font-style: italic;
+    color: rgba(242,232,213,0.55);
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .ep-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .ep-stat {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+
+  .ep-stat span {
+    color: var(--amber);
+  }
+
+  /* SCRIPT BODY */
+  .script {
+    position: relative;
+  }
+
+  .slug {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-top: 44px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(212,135,10,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .slug-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .slug-left::before {
+    content: '▶';
+    font-size: 7px;
+    opacity: 0.5;
+  }
+
+  .slug:first-child { margin-top: 0; }
+
+  .timestamp {
+    font-size: 10px;
+    color: rgba(92,74,58,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  .action {
+    color: rgba(242,232,213,0.55);
+    font-style: italic;
+    font-size: 17px;
+    margin-bottom: 16px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(92,74,58,0.25);
+    line-height: 1.7;
+  }
+
+  .direction {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--green-bright);
+    text-transform: uppercase;
+    margin: 20px 0 8px;
+  }
+
+  .dialogue-block {
+    margin: 20px 0;
+    padding: 18px 22px;
+    border-left: 3px solid rgba(139,0,0,0.35);
+    background: rgba(139,0,0,0.03);
+  }
+
+  .character {
+    font-family: var(--display);
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    margin-bottom: 4px;
+  }
+
+  .parenthetical {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+
+  .dialogue {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--parchment);
+  }
+
+  .vo-block {
+    margin: 20px 0;
+    padding: 18px 22px;
+    border-left: 3px solid rgba(212,135,10,0.4);
+    background: rgba(212,135,10,0.03);
+  }
+
+  .vo-label {
+    font-family: var(--display);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    margin-bottom: 4px;
+  }
+
+  .vo-text {
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.65;
+    color: rgba(242,232,213,0.9);
+  }
+
+  .title-card {
+    margin: 30px 0;
+    padding: 22px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(139,0,0,0.25);
+    text-align: center;
+  }
+
+  .title-card-text {
+    font-family: var(--display);
+    font-size: 28px;
+    letter-spacing: 0.3em;
+    color: var(--parchment);
+    text-shadow: 0 0 30px rgba(139,0,0,0.5);
+  }
+
+  .title-card-sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .retention-note {
+    margin: 22px 0;
+    padding: 12px 16px;
+    background: rgba(74,124,32,0.07);
+    border: 1px dashed rgba(74,124,32,0.25);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--green-bright);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
+
+  .retention-note::before {
+    content: '◆ RETENTION: ';
+    opacity: 0.7;
+  }
+
+  .sound {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #7F8C8D;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background: rgba(127,140,141,0.05);
+    display: inline-block;
+  }
+
+  .sound::before { content: '♪ '; }
+
+  .cut {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: rgba(92,74,58,0.4);
+    text-align: right;
+    margin-top: 30px;
+    text-transform: uppercase;
+    padding-top: 16px;
+    border-top: 1px solid rgba(92,74,58,0.1);
+  }
+
+  .next-hook {
+    margin-top: 30px;
+    padding: 20px 24px;
+    background: linear-gradient(90deg, rgba(139,0,0,0.1), transparent);
+    border-left: 3px solid var(--rust);
+  }
+
+  .next-hook-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .next-hook-text {
+    font-style: italic;
+    color: rgba(242,232,213,0.7);
+    font-size: 16px;
+  }
+
+  /* DIVIDER */
+  .ep-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139,0,0,0.4), transparent);
+    margin: 60px 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 60px 40px;
+    border-top: 1px solid rgba(92,74,58,0.15);
+  }
+
+  .footer-logo {
+    font-family: var(--display);
+    font-size: 28px;
+    letter-spacing: 0.25em;
+    color: rgba(92,74,58,0.3);
+    margin-bottom: 8px;
+  }
+
+  .footer-note {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(92,74,58,0.3);
+    letter-spacing: 0.15em;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--rust); }
+
+  @media (max-width: 600px) {
+    .nav { padding: 10px 16px; }
+    .nav-episodes { display: none; }
+    .hero { padding: 100px 24px 40px; }
+    .episodes { padding: 40px 20px; }
+    .ep-header { grid-template-columns: 1fr; gap: 10px; }
+    .ep-number { font-size: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">BLOODLINE DISPATCH</div>
+  <div class="nav-episodes">
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep1">EP.01</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep2">EP.02</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep3">EP.03</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep4">EP.04</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep5">EP.05</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep6">EP.06</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep7">EP.07</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep8">EP.08</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep9">EP.09</a>
+    <a class="nav-ep" href="file:///Users/travistippetts/Downloads/bloodline_dispatch_scripts_2_10_1.html#ep10">EP.10</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Complete Series Scripts — Episodes 1 through 10</div>
+  <div class="hero-title">UNDER<br>THE SKIN</div>
+  <div class="hero-sub">Full production scripts. Cinematic tone. Built for retention. Every scene engineered to keep viewers watching.</div>
+</div>
+
+<div class="episodes">
+
+<!-- ============================================================ EP 01 ============================================================ -->
+<div class="episode" id="ep1">
+  <div class="ep-header">
+    <div class="ep-number">01</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode One</div>
+      <div class="ep-title">THE DYING<br>FIELD</div>
+      <div class="ep-logline">"Something is in the grass. And it's spreading."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>OZARK HIGHLANDS, MISSOURI</span></div>
+        <div class="ep-stat">TONE <span>CINEMATIC COLD OPEN / CRISIS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">Cold open. No title card. No introduction. Throw the viewer into the scene mid-crisis. First 30 seconds must be visually arresting. Do not explain. Make them ask questions.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — EXT. MORROW FARM, OZARK HIGHLANDS — PRE-DAWN</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">BLACK SCREEN. The sound of a horse breathing — slow, labored, wrong. Then silence.<br><br>FADE IN: A field at 4 AM. The Missouri sky is the color of a bruise. Fireflies have been replaced by something else — the soft blue glow of a phone flashlight cutting through knee-high grass.<br><br>We follow the light. Boots pressing into dew-soaked soil. Each step deliberate, searching.</div>
+
+    <div class="sound">AMBIENT: INSECT DRONE, LOW AND CONSTANT. SOMETHING IN THE GRASS.</div>
+
+    <div class="action">The light finds it. A horse — 1,400 pounds of quarter horse — lying on its side. Not sleeping. The flank barely moving. Labored, shallow breaths.<br><br>A hand enters frame. Calloused. Steady. It touches the horse's jaw, gently, the way someone touches a thing they love and are afraid to lose.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">His name was Ranger. Fourteen years old. Champion cutting horse, two county fairs, never sick a day in his life. I'd delivered him myself — pulled him into the world on a January night just like this one.<br><br>I knew when I saw him that morning that I wasn't looking at colic. I wasn't looking at anything I'd treated before. I was looking at something new.</div>
+    </div>
+
+    <div class="action">CUT TO: DR. CALHOUN "CAL" MORROW, 48. Face like a topographical map of everything he's been through. Weathered but not broken. He crouches beside Ranger, pulls a small headlamp from his jacket, begins examining the horse's neck, inner ears, legs.</div>
+
+    <div class="direction">CLOSE ON: Cal's gloved fingers parting the hair at Ranger's neck. He stops.</div>
+
+    <div class="action">He leans closer. Then slower, he exhales through his nose. Not panic. Recognition. He's seen something he knows he shouldn't be seeing here.</div>
+
+    <div class="direction">EXTREME CLOSE UP: A cluster of ticks — dark, swollen, motionless. Dozens. Embedded in a ring pattern that is not random.</div>
+
+    <div class="retention-note">Do NOT explain the ring pattern. Let it sit. The audience will pause and rewatch this moment. Let the visual do the work.</div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode One — "The Dying Field"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">ACT ONE — EXT./INT. MORROW FARM — MORNING</div><span class="timestamp">01:20</span></div>
+
+    <div class="action">TIME CUT: Golden hour. The farm materializes in daylight. Rolling pasture, white-fenced paddocks, a modest clinic building attached to a converted barn. A hand-painted sign: MORROW LARGE ANIMAL VETERINARY — EST. 2011.<br><br>Ranger has been moved to the clinic. He's alive, barely. Cal moves with focused efficiency — IV line, blood draw, vitals log. A young vet tech, BRIANNA, 24, hovers nearby.</div>
+
+    <div class="dialogue-block">
+      <div class="character">BRIANNA</div>
+      <div class="parenthetical">(watching the blood draw)</div>
+      <div class="dialogue">You want me to call Dr. Hensley at the university extension?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(not looking up)</div>
+      <div class="dialogue">Not yet. I want my own numbers first before anyone else gets in this room.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">BRIANNA</div>
+      <div class="dialogue">The Delacroix farm called. They've got two heifers showing similar symptoms. Fever, lethargy, won't eat.</div>
+    </div>
+
+    <div class="action">Cal stops. Sets down the vial. Stares at the wall for exactly three seconds. This is a man who calculates before he reacts.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(quietly)</div>
+      <div class="dialogue">How far is Delacroix from here?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">BRIANNA</div>
+      <div class="dialogue">Four miles. Maybe five.</div>
+    </div>
+
+    <div class="action">Cal writes something on his notepad. His face betrays nothing. But the pen presses hard enough to tear the paper.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">Here's what they don't teach you in veterinary school: the difference between an outbreak and an epidemic is usually just the number of phone calls you get before noon. By 10 AM that day, I had four.</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">RAPID MONTAGE — MULTIPLE FARMS, OZARK REGION — DAY ONE</div><span class="timestamp">02:45</span></div>
+
+    <div class="direction">VISUAL SEQUENCE — HAND-HELD, DOCUMENTARY STYLE. EACH SHOT: 3-4 SECONDS.</div>
+
+    <div class="action">— A goat lying in a feed pen, glassy-eyed.<br>— An elderly farmer, MERLE, standing at a fence line, hat in hand, watching his cattle bunch at the far end of the pasture like they're afraid of something closer.<br>— Cal's truck, dust plume behind it, pushing down a gravel road at speed.<br>— A dead dog near a tree line. Owner crouched beside it, not understanding.<br>— Cal's hands, latex-gloved, parting animal fur. Finding what he already expects to find.<br>— A map on his dashboard, red dots appearing in marker. Four farms. Five miles radius. The dots form a shape. Cal stares at it. Doesn't like what he sees.</div>
+
+    <div class="sound">SCORE: LOW DRONE BUILDS. SINGLE SUSTAINED CELLO NOTE.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — INTERVIEW SETUP — LATER THAT DAY</div><span class="timestamp">04:00</span></div>
+
+    <div class="direction">DIRECT TO CAMERA. CAL SEATED. CLINICAL BACKGROUND SLIGHTLY SOFT. THIS IS THE "NOW" TIMELINE.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(deliberate, controlled)</div>
+      <div class="dialogue">Fourteen years I've worked this region. I've seen Lyme clusters. I've seen anaplasmosis roll through a herd. I've seen what happens when tick populations spike after a mild winter — and it looks nothing like what I saw that day.<br><br>What I saw looked systematic. The distribution pattern across those five farms didn't follow any natural gradient I'd ever studied. Ticks don't respect property lines, but they also don't show up in uniform density across multiple unconnected properties simultaneously. That's — that's not ecology. That's placement.</div>
+    </div>
+
+    <div class="action">He lets that word sit. He's a scientist. He chose it carefully.</div>
+
+    <div class="retention-note">At 4:00 — drop a lower-third graphic: "Dr. Cal Morrow has reported his findings to three separate state agencies. None have responded." This creates institutional distrust and viewer outrage. Keep it on screen for 5 seconds.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — LATE EVENING — DAY ONE</div><span class="timestamp">05:10</span></div>
+
+    <div class="action">Cal sits on an overturned bucket beside Ranger's stall. The horse's breathing has steadied but he's not out of danger. Cal holds the blood panel results in his hands. He's been reading them for a long time.<br><br>Brianna appears in the doorway.</div>
+
+    <div class="dialogue-block">
+      <div class="character">BRIANNA</div>
+      <div class="dialogue">You should eat something.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(not looking up)</div>
+      <div class="dialogue">Babesiosis markers are all wrong. It reads like babesiosis but it's not presenting the way babesiosis presents. The pathogen response is —<br><span style="font-style:italic">(pauses)</span><br>It's like something that's been modified to be harder to identify.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">BRIANNA</div>
+      <div class="parenthetical">(a beat)</div>
+      <div class="dialogue">Modified how?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(finally looks up)</div>
+      <div class="dialogue">That's what I intend to find out.</div>
+    </div>
+
+    <div class="sound">SCORE: SINGLE PIANO NOTE. HELD.</div>
+
+    <div class="slug"><div class="slug-left">EXT. MORROW FARM — NIGHT — END OF DAY ONE</div><span class="timestamp">06:45</span></div>
+
+    <div class="action">Cal stands on his porch. A glass of water in his hand, untouched. He's staring at the tree line — the dark edge of his property where his field meets the forest.<br><br>He pulls out his phone. Scrolls. Finds an old news article: a biotech grant announcement. A foundation name he recognizes. A familiar face in the photo.<br><br>He reads it once. Then again.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">I'd spent six years at Velacor Pharmaceuticals before I walked away. I know what institutional money looks like. I know what research looks like when it's meant to solve a problem — and I know what it looks like when the research IS the problem.<br><br>That night, standing on my porch in the dark, I found a thread. I didn't know yet how far it would unravel. I didn't know what it would cost me.<br><br>But I pulled it.</div>
+    </div>
+
+    <div class="direction">SLOW PUSH IN ON CAL'S FACE. THE TREE LINE BEHIND HIM, OUT OF FOCUS. SOMETHING IN THE GRASS CATCHES THE PORCH LIGHT — BRIEF, BARELY VISIBLE. A BOX. PARTIALLY HIDDEN BY BRUSH.</div>
+
+    <div class="action">Cal doesn't see it yet.<br><br>But we do.</div>
+
+    <div class="sound">SCORE: DRONE RISES. HARD CUT TO BLACK.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"He left one of the most powerful pharmaceutical companies in the world. They said it was voluntary. It wasn't."</div>
+    </div>
+
+    <div class="retention-note">End screen hook MUST appear at 7:50. Never wait until 8:00. Tease Episode 2 with a 10-second visual of Cal's Velacor ID badge — then a slow zoom on a redacted document with the foundation's name partially visible. Say nothing. Let the image speak.</div>
+
+    <div class="cut">— END OF EPISODE ONE — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 02 ============================================================ -->
+<div class="episode" id="ep2">
+  <div class="ep-header">
+    <div class="ep-number">02</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Two</div>
+      <div class="ep-title">THE MAN WHO LEFT<br>THE LAB</div>
+      <div class="ep-logline">"He walked away from one of the most powerful pharmaceutical companies in the world. They said it was voluntary. It wasn't."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>VELACOR PHARMA HQ / OZARK FARM</span></div>
+        <div class="ep-stat">TONE <span>BACKSTORY / DREAD</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">Cold open pulls the viewer into Cal's past. We are in a world they don't know yet. Hold back the farm. Make the lab feel like a trap he barely escaped.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — INT. VELACOR PHARMACEUTICALS, RESEARCH WING — NIGHT — SIX YEARS AGO</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">BLACK. A single sound: the mechanical hum of a centrifuge. Then a fluorescent flicker. A sterile corridor appears — white tile, cold light, the antiseptic smell you can almost feel through the screen. Late. No one should be here.</div>
+
+    <div class="action">DR. CAL MORROW, 42, younger, cleaner, carrying the particular tension of a man who has just seen something he can't un-see. He walks fast — not running, because running would mean something is wrong. He needs everything to look normal for twelve more minutes.</div>
+
+    <div class="action">He carries a manila folder. Inside it: a printout. He doesn't look at it. He already knows what it says.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">I was a Senior Research Associate at Velacor for six years. Tick-borne pathogen suppression — that was my department. It sounds niche. It isn't. Ticks cost the global livestock industry somewhere north of thirty billion dollars a year. The company that cracks that problem first doesn't just win a contract. They win a decade.</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. VELACOR — CAL'S OFFICE — CONTINUOUS</div><span class="timestamp">01:10</span></div>
+
+    <div class="action">Cal closes the door. Sits. Opens the folder on his desk under the single desk lamp. The printout is a trial summary — internal, marked CONFIDENTIAL TIER 3. He reads it again even though he has memorized it. His face runs through something — disbelief, then certainty, then a cold and specific kind of fear.</div>
+
+    <div class="direction">INSERT: The document. Key line visible: "MORTALITY RATE IN NON-TARGET SPECIES: 34%. RECOMMEND SUPPRESSION OF FINDINGS. PROCEED TO PHASE 3."</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(to himself, barely audible)</div>
+      <div class="dialogue">Thirty-four percent.</div>
+    </div>
+
+    <div class="action">He closes the folder. Sits very still. The centrifuge hums down the hall. He has a choice to make and he already knows what it is.</div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Two — "The Man Who Left The Lab"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — INTERVIEW SETUP — PRESENT DAY</div><span class="timestamp">01:55</span></div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(direct to camera)</div>
+      <div class="dialogue">Phase 3 meant animal trials. Large scale. The data from Phase 2 was showing non-target mortality — meaning animals that weren't supposed to be affected by the modified pathogen were dying anyway. At a rate of thirty-four percent.<br><br>I raised it. Formally, in writing, to my department head. He told me the data was being "contextualized." That's the word he used. Contextualized.<br><br>Two weeks later, my access to the trial database was revoked. A month after that, I was offered a severance package and told my position was being "restructured."</div>
+    </div>
+
+    <div class="direction">BEAT. Cal looks briefly away from camera. Returns.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="dialogue">I took the severance. I signed the NDA. And I told myself I was done with all of it.<br><br>I wasn't done.</div>
+    </div>
+
+    <div class="retention-note">At 3:00 — lower third: "Velacor Pharmaceuticals declined to comment. The Phase 2 trial Cal references has never been publicly disclosed." Hold 6 seconds. Let that land.</div>
+
+    <div class="slug"><div class="slug-left">INT. VELACOR — BOARDROOM — FLASHBACK</div><span class="timestamp">03:15</span></div>
+
+    <div class="action">A memory. Cal sits across a long table from two men in suits — HR and Legal. A severance agreement sits between them. A pen. Cal stares at the pen for a long time. One of the men — DIRECTOR FENN, 55, the particular kind of smooth that comes from decades of not being questioned — slides it closer.</div>
+
+    <div class="dialogue-block">
+      <div class="character">DIRECTOR FENN</div>
+      <div class="parenthetical">(pleasantly)</div>
+      <div class="dialogue">This is a generous offer, Cal. Eighteen months. Full benefits continuation. The non-disclosure is standard — you understand. Protecting proprietary research. Nothing unusual.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(looking at Fenn)</div>
+      <div class="dialogue">The trial data—</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">DIRECTOR FENN</div>
+      <div class="parenthetical">(cutting him off, still smiling)</div>
+      <div class="dialogue">Is being reviewed by our internal science board. As I said. Standard protocol.</div>
+    </div>
+
+    <div class="action">Cal picks up the pen. Signs. He doesn't look at Fenn again.</div>
+
+    <div class="slug"><div class="slug-left">EXT. VELACOR HEADQUARTERS — PARKING LOT — CONTINUOUS (FLASHBACK)</div><span class="timestamp">04:40</span></div>
+
+    <div class="action">Cal walks to his truck. Gets in. Sits. Looks at his hands on the steering wheel. He has just traded his conscience for eighteen months of salary and he knows it. His jaw sets. The truck starts. He pulls out of the lot for the last time.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">I bought forty acres in the Ozarks. Built the clinic. Told myself I was done with pharmaceutical science and I was going to spend the rest of my life doing something that mattered — taking care of animals, taking care of the people who depend on them. And for five years, that's exactly what I did.<br><br>Then Ranger died. And a box appeared in my field. And I started pulling on a thread I recognized. Because I'd seen it before. I'd seen where it led.</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — PRESENT DAY</div><span class="timestamp">06:10</span></div>
+
+    <div class="action">Cal at his desk. The blood panel results from the previous episode spread in front of him, alongside a fresh printout — a journal article on modified tick vectors, downloaded at 2 AM. He circles a name in the author list. Stares at it.</div>
+
+    <div class="action">The name is DR. SYLVIA CRANE — a Velacor researcher. Someone he worked with. Someone who stayed.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(picks up phone. Pauses. Sets it back down.)</div>
+      <div class="dialogue">Not yet.</div>
+    </div>
+
+    <div class="action">He opens his laptop instead. Types a name into a search engine: MAXWELL HOLT FOUNDATION — BIOTECH GRANTS 2022.<br><br>The results load. He leans forward. The screen light catches his eyes.</div>
+
+    <div class="sound">SCORE: LOW CELLO. ONE NOTE. SUSTAINED.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"The lab results come back. The entomologist goes quiet mid-sentence. And the tick on Cal's examination table is carrying something that shouldn't exist outside a biosafety level three facility."</div>
+    </div>
+
+    <div class="cut">— END OF EPISODE TWO — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 03 ============================================================ -->
+<div class="episode" id="ep3">
+  <div class="ep-header">
+    <div class="ep-number">03</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Three</div>
+      <div class="ep-title">THE TICK THAT<br>SHOULDN'T EXIST</div>
+      <div class="ep-logline">"The lab results come back. The entomologist goes quiet mid-sentence. The tick is carrying something that has never been found in nature."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>UNIVERSITY LAB / MORROW FARM</span></div>
+        <div class="ep-stat">TONE <span>SCIENTIFIC HORROR / REVELATION</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">This is the episode where the science drops. Make it visceral. The expert going quiet is worth more than ten minutes of explanation. Frame it so the viewer feels the dread before they understand it.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — INT. UNIVERSITY ENTOMOLOGY LAB — DAY</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">A university laboratory. Cluttered, academic, real — the opposite of Velacor's sterile corridors. Jars of specimens. Pinboards. Stacks of journals. DR. MIRIAM OSEI, 58, entomologist, the kind of expert who has spent forty years being the most knowledgeable person in any room, sits at her microscope. Cal stands across the bench from her.</div>
+
+    <div class="action">She has been looking at the specimen for six minutes without speaking. Cal has not interrupted.</div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="parenthetical">(not looking up)</div>
+      <div class="dialogue">Where exactly did you collect this?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">From the neck of a fourteen-year-old quarter horse. Ozark County. My property.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="dialogue">And the horse?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">Didn't make it.</div>
+    </div>
+
+    <div class="action">She sits back from the microscope for the first time. Looks at Cal directly. Her expression is the kind that comes from someone who has just seen something that rewrites what they thought they knew.</div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="parenthetical">(carefully)</div>
+      <div class="dialogue">Cal. This species profile is consistent with Rhipicephalus microplus — the Asian cattle tick. That species does not have an established population in Missouri. It barely has a foothold in Texas.<br><br>But that's not what's concerning me.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">What's concerning you?</div>
+    </div>
+
+    <div class="action">She turns the microscope toward him. He looks through the eyepiece. We see what he sees — the cellular structure of the tick's salivary gland tissue, magnified, and within it, something geometric. Ordered. Not natural.</div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="parenthetical">(very quietly)</div>
+      <div class="dialogue">This isn't natural selection, Cal. Someone made this.</div>
+    </div>
+
+    <div class="sound">HARD CUT TO BLACK. SILENCE.</div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Three — "The Tick That Shouldn't Exist"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. UNIVERSITY ENTOMOLOGY LAB — CONTINUOUS</div><span class="timestamp">01:50</span></div>
+
+    <div class="action">Cal pulls back from the microscope. He is controlled. He has suspected something like this. Hearing it said aloud by someone of Osei's caliber is different.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">You're certain.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="dialogue">I'm certain that the genetic marker profile in that salivary tissue is not something that occurs through natural mutation. The sequencing pattern in the pathogen vector suggests deliberate modification — specifically in the protein expression sequence that governs host immune suppression.<br><br>In plain language: whoever did this made the tick better at hiding from the host's immune system. More efficient. More lethal.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">Could this be Oxitec-adjacent work? The self-limiting programs?</div>
+    </div>
+
+    <div class="action">Osei pauses. Chooses her words.</div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="dialogue">The self-limiting programs suppress tick populations. They work by engineering sterility into offspring. What I'm looking at here is the opposite. This modification makes the tick more effective, not less.<br><br>This isn't pest suppression, Cal. This is enhancement.</div>
+    </div>
+
+    <div class="retention-note">At 3:30 — lower third: "Dr. Osei submitted a preliminary report to the CDC within 48 hours. She received no response." Let it sit for 7 seconds.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — INTERVIEW SETUP — PRESENT DAY</div><span class="timestamp">03:45</span></div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(to camera)</div>
+      <div class="dialogue">Here's what you need to understand about Rhipicephalus microplus — the cattle tick. It doesn't belong in Missouri. It barely belongs in the continental United States. For it to appear here, in the densities we were seeing, across multiple unconnected properties simultaneously — that requires a vector. Something moved these ticks here.<br><br>And for the pathogen they were carrying to show deliberate genetic modification — that requires a laboratory. A serious one. Biosafety Level Three, minimum. The kind of facility that costs tens of millions of dollars to operate.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(pause)</div>
+      <div class="dialogue">The question I kept coming back to was simple. Who has that kind of money? And who has a reason to want it spent on ticks?</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. UNIVERSITY LAB — LATER</div><span class="timestamp">05:00</span></div>
+
+    <div class="action">Osei runs a full genomic sequence. Cal watches the results populate on her monitor. Column after column of base pair data. Then the software flags something — a segment highlighted in red.</div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="parenthetical">(leaning toward the screen)</div>
+      <div class="dialogue">This sequence here — the immunosuppressive vector — I've seen something architecturally similar in published research. A 2019 paper. The methodology section described a proof-of-concept modification to tick salivary proteins.<br><br>The lead author was a researcher at a private biotech firm. The funding disclosure listed a philanthropic foundation.</div>
+    </div>
+
+    <div class="action">She pulls up the paper. Scrolls to the funding acknowledgment. Cal reads it. His expression doesn't change but his jaw tightens almost imperceptibly.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">The Maxwell Holt Foundation.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="parenthetical">(quietly)</div>
+      <div class="dialogue">It's a funding disclosure. Not an accusation.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">Not yet.</div>
+    </div>
+
+    <div class="sound">SCORE: DRONE RISES. SLOW FADE.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"A neighboring rancher finds a box at his treeline. Inside it: hundreds of ticks. No markings. No origin. And surveillance footage from a rural highway camera shows what delivered them."</div>
+    </div>
+
+    <div class="cut">— END OF EPISODE THREE — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 04 ============================================================ -->
+<div class="episode" id="ep4">
+  <div class="ep-header">
+    <div class="ep-number">04</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Four</div>
+      <div class="ep-title">BOXES IN<br>THE GRASS</div>
+      <div class="ep-logline">"A box. No markings. Ventilation holes. And something moving inside."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>OZARK FARMLAND / RURAL HIGHWAY</span></div>
+        <div class="ep-stat">TONE <span>PHYSICAL EVIDENCE / ESCALATING DREAD</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">This is the episode where the theory becomes tangible. Physical evidence in a viewer's hand is worth ten expert interviews. Make the box feel real. Make the viewer feel like they're standing at that treeline.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — EXT. DELACROIX FARM, TREELINE — DUSK</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">Dying amber light. MERLE DELACROIX, 67, third-generation cattle farmer, a man shaped by forty years of hard weather, walks his fence line the way he does every evening. Routine. Comfortable. Then he stops.</div>
+
+    <div class="action">Something at the treeline. He moves toward it. Pushes through the tall grass. Crouches down.</div>
+
+    <div class="action">A cardboard box. Plain brown corrugated. Damp at the corners from two nights of dew. Sitting just inside the tree line, as if placed there deliberately. Small holes punched in a pattern along the sides — ventilation holes. And at one of those holes: movement. Something dark. Multi-legged. Trying to get out.</div>
+
+    <div class="direction">CLOSE ON: Merle's face. He is a man who has seen everything the land can produce. He has never seen this.</div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Four — "Boxes In The Grass"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">EXT. DELACROIX FARM, TREELINE — SHORTLY AFTER — NIGHT</div><span class="timestamp">01:30</span></div>
+
+    <div class="action">Cal's truck pulls up fast. He's out before it fully stops. Merle stands at the edge of his truck's headlights, arms crossed, waiting. The box sits between them.</div>
+
+    <div class="dialogue-block">
+      <div class="character">MERLE</div>
+      <div class="dialogue">Didn't touch it. Soon as I saw what was in there I stepped back and called you.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(crouching, flashlight on)</div>
+      <div class="dialogue">Good man. How long you think it's been here?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">MERLE</div>
+      <div class="dialogue">Minimum two nights. Maybe three. I walk this line every evening — didn't see it before two days ago, so it went in after dark.</div>
+    </div>
+
+    <div class="action">Cal pulls on latex gloves. Leans close to the box. Runs his flashlight along the ventilation holes. Dark movement everywhere. Hundreds of them. He counts the holes — sixteen, in a deliberate pattern. He photographs the box from six angles before touching it.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(quietly, to himself)</div>
+      <div class="dialogue">Same species.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">MERLE</div>
+      <div class="dialogue">What's that?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">These are the same ticks that killed Ranger. Asian cattle tick. They have no business being in Missouri, Merle. And they definitely have no business being in a cardboard box at your treeline.<br><br>Somebody put them here.</div>
+    </div>
+
+    <div class="action">Merle is quiet for a moment. Sixty-seven years of hard practicality working through what he's been told.</div>
+
+    <div class="dialogue-block">
+      <div class="character">MERLE</div>
+      <div class="dialogue">Put 'em here. On purpose.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">That's what I need to find out.</div>
+    </div>
+
+    <div class="retention-note">At 3:20 — lower third: "Cal reported the box to the Missouri Department of Agriculture. He received an automated response." 7 seconds. Let viewer rage build.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — INTERVIEW — PRESENT DAY</div><span class="timestamp">03:35</span></div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(to camera)</div>
+      <div class="dialogue">There's a rural highway camera — county-maintained, covers a two-mile stretch of Route 7 that borders both my property and Merle's. I filed a public records request for the footage. Forty-eight-hour window centered on the estimated delivery date of the box.<br><br>It took eleven days to get a response. When it came back, they told me the camera had experienced a "data storage error" during that specific window. The forty-eight hours I requested were the only forty-eight hours missing from a full year of footage.</div>
+    </div>
+
+    <div class="direction">HOLD ON CAL'S FACE. DON'T CUT. LET THE SILENCE SPEAK.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM — KITCHEN — LATE NIGHT</div><span class="timestamp">05:10</span></div>
+
+    <div class="action">Cal sits at his kitchen table. Maps spread in front of him — topographical, county road maps. He's marked every farm that reported sick animals with a red dot. Five properties. Then he marks the location of Merle's box with an X. Then he draws a circle. All five dots fall inside it. The center of the circle: an access road that connects to Route 7.</div>
+
+    <div class="action">He photographs the map. Sends it to Dr. Osei with a message: "Pattern consistent with systematic placement from single access point. Not random dispersal."</div>
+
+    <div class="action">He stares at the map. The circle. The centre point. He opens his laptop. Types the coordinates into a satellite view.</div>
+
+    <div class="direction">INSERT — SCREEN: Satellite imagery. The access road. And at the edge of the frame — a property boundary. A name on the county parcel records: HOLT AGRICULTURAL HOLDINGS LLC.</div>
+
+    <div class="action">Cal stares at the screen for a long time. Then slowly closes the laptop.</div>
+
+    <div class="sound">SCORE: SINGLE LOW PIANO NOTE. SUSTAINED UNTIL BLACK.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"The money trail is eleven layers deep. But Cal finds the thread. And when he pulls it, it leads somewhere that should be impossible."</div>
+    </div>
+
+    <div class="cut">— END OF EPISODE FOUR — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 05 ============================================================ -->
+<div class="episode" id="ep5">
+  <div class="ep-header">
+    <div class="ep-number">05</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Five</div>
+      <div class="ep-title">FOLLOW<br>THE MONEY</div>
+      <div class="ep-logline">"Eleven shell companies. Three continents. And a foundation that publicly funds tick eradication — while privately funding something else entirely."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>MORROW FARM / DIGITAL TRAIL</span></div>
+        <div class="ep-stat">TONE <span>INVESTIGATIVE / CO-INVESTIGATOR ENERGY</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">This is the episode that makes the viewer feel like a detective alongside Cal. The "follow the money" sequence needs to be visually clear — use graphics, inserts, the corkboard. Make it satisfying to watch the connections form. The payoff is the subsidiary. Save it for the last 90 seconds.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — INT. MORROW FARM OFFICE — 3 AM</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">Cal has not slept. The desk is covered in printouts — grant records, corporate filings, biotech patent applications. A corkboard on the wall has been transformed: red string connecting photos, documents, names. In the centre: MAXWELL HOLT. Around him, a web of connections.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">Maxwell Holt. Worth eighty-seven billion dollars. Software. Infrastructure. Vaccines. Agricultural technology. A man who has publicly stated, on multiple occasions, that the world needs to stop eating red meat. A man who owns more farmland in the United States than any private individual in history. And a man whose foundation funds research into genetic pest control — including, as of 2021, tick vector modification.</div>
+    </div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Five — "Follow The Money"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM OFFICE — CONTINUOUS</div><span class="timestamp">01:20</span></div>
+
+    <div class="action">Cal walks us through the corkboard, methodically. This is a man who knows how institutional money moves — he watched it at Velacor. He tracks the Holt Foundation's grant to a UK biotech firm. Then the biotech firm's subsidiary, registered in Delaware. Then the subsidiary's research contract with a private laboratory in — he pauses on this, points to a printout — rural Missouri.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(to camera, pointing at corkboard)</div>
+      <div class="dialogue">The foundation gives money to the biotech. The biotech creates a subsidiary — ostensibly for "agricultural vector research." The subsidiary contracts a private lab. The private lab is twelve miles from my farm.<br><br>This isn't speculation. Every connection I'm showing you is documented in public filings. The money is real. The subsidiary is real. The lab is real. What I couldn't prove yet — what I still needed — was what they were doing inside it.</div>
+    </div>
+
+    <div class="retention-note">At 3:00 — graphic overlay showing the money flow as an animated diagram. Foundation → Biotech → Subsidiary → Private Lab → 12 miles from Morrow Farm. No narration. Just the visual. 8 seconds.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM OFFICE — LATER</div><span class="timestamp">03:20</span></div>
+
+    <div class="action">Cal gets a call. He picks up. The voice on the other end is ELENA VOSS, 38 — a financial investigator he knows from his Velacor days. She's cautious. Calling from a different number than usual.</div>
+
+    <div class="dialogue-block">
+      <div class="character">ELENA</div>
+      <div class="parenthetical">(phone, slightly distorted)</div>
+      <div class="dialogue">Cal. I looked at what you sent me. The subsidiary structure.<br><br>There's a second layer you didn't find. The subsidiary has a subsidiary. Registered in the Caymans. No public officers listed. But the tax ID traces back through two holding companies to a research division that doesn't have a name — just a project code. Project SILVERGATE.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">You got documentation on this?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">ELENA</div>
+      <div class="dialogue">I have enough to point you in the right direction. I'm not putting my name on anything. Not yet.<br><br>Cal — be careful. The people who structure money this many layers deep — they do it because they have something significant to protect.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">I know.</div>
+    </div>
+
+    <div class="action">He hangs up. Adds PROJECT SILVERGATE to the corkboard. Draws a line from the Cayman subsidiary to the private Missouri lab. Stands back and looks at the whole picture.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — INTERVIEW — PRESENT DAY</div><span class="timestamp">05:30</span></div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(to camera)</div>
+      <div class="dialogue">I want to be precise here, because precision matters. The Maxwell Holt Foundation publicly funds tick eradication research. That is a fact. What they claim to be doing is reducing tick populations to protect livestock in low-income countries.<br><br>But the subsidiary — Project Silvergate — has no public research output. No published papers. No grant disclosures. For a project that has received, by my estimate, north of forty million dollars over four years — that kind of silence is not an accident.<br><br>It is a design.</div>
+    </div>
+
+    <div class="direction">HOLD ON CAL. SLOW PUSH IN. HE DOESN'T LOOK AWAY FROM CAMERA.</div>
+
+    <div class="sound">SCORE: DRONE BUILDS. LOW. INEVITABLE.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"Maxwell Holt has spent thirty years projecting total control. But a childhood interview — buried for decades — reveals the one thing in the world that terrifies him."</div>
+    </div>
+
+    <div class="cut">— END OF EPISODE FIVE — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 06 ============================================================ -->
+<div class="episode" id="ep6">
+  <div class="ep-header">
+    <div class="ep-number">06</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Six</div>
+      <div class="ep-title">THE PHILANTHROPIST'S<br>FEAR</div>
+      <div class="ep-logline">"He controls billions. He controls governments. He cannot control what a tick does to him."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>HOLT PRIVATE ESTATE / ARCHIVE FOOTAGE</span></div>
+        <div class="ep-stat">TONE <span>PSYCHOLOGICAL / IRONY BUILDS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">This is the episode that humanizes Holt without forgiving him. The villain must be three-dimensional. The childhood fear makes the irony of the finale land harder. Play it straight — let the audience draw the connection themselves. Do not spell it out.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — ARCHIVAL FOOTAGE — 1987</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">Grainy VHS quality. A summer programme — a youth science camp somewhere in rural Connecticut. A presenter, cheerful, 1980s aesthetic, holds a jar of preserved specimens. Children crowd around. Most of them lean in. One boy, 12, steps back. His face changes.</div>
+
+    <div class="action">The presenter pulls a tick from the jar. Holds it up. The boy — MAXWELL HOLT at twelve years old — goes visibly pale. Another child notices and laughs. Maxwell's jaw tightens. He controls himself. But his eyes don't leave the tick until the presenter puts it away.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">In 1991, a regional magazine profiled the Holt family — old Connecticut money, three generations. The twelve-year-old Maxwell was quoted describing the summer he'd spent at his family's Connecticut estate and been, in his words, "covered in them. Couldn't sleep for a week." He said he'd had nightmares about it for years afterward. The article was never digitized. I found it in a university archive.</div>
+    </div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Six — "The Philanthropist's Fear"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM OFFICE — PRESENT DAY</div><span class="timestamp">01:40</span></div>
+
+    <div class="action">Cal holds a photocopy of the 1991 magazine article. He reads it with the focused attention of a man assembling a psychological profile. He adds it to the corkboard. Steps back. Looks at the whole picture.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(to camera)</div>
+      <div class="dialogue">I'm not a psychologist. I'm not going to tell you what this means about Maxwell Holt. What I will tell you is that a man who has spent thirty years building the world's most influential philanthropic infrastructure — who controls research agendas across six continents — who has the resources to fund any project he chooses — chose ticks.<br><br>He is personally, viscerally terrified of ticks.<br><br>Make of that what you will.</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. HOLT FOUNDATION GALA — ARCHIVAL FOOTAGE — 2019</div><span class="timestamp">03:00</span></div>
+
+    <div class="action">Public event footage. MAXWELL HOLT, now 44, immaculate in a dark suit, addressing a ballroom of donors. Poised, controlled, brilliant. The performance of a man who has refined his public image across decades.</div>
+
+    <div class="dialogue-block">
+      <div class="character">MAXWELL HOLT</div>
+      <div class="parenthetical">(at podium, archival)</div>
+      <div class="dialogue">The threats to global food security are not abstract. They are present. They are in the soil, in the water, and yes — in the very parasites that make livestock farming increasingly untenable across the developing world. Our investment in vector control isn't charity. It's infrastructure for a world that needs to feed itself differently.</div>
+    </div>
+
+    <div class="action">Applause. Holt smiles. Acknowledges it. The camera catches his hand, briefly, straightening his cufflink. A small, compulsive gesture. His eyes, for just a moment, are somewhere else entirely.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">The world needs to feed itself differently. He's said that phrase, or versions of it, in forty-seven public appearances since 2015. The implication is always the same: less meat. Synthetic protein. Plant-based alternatives — several of which are backed by Holt Foundation investments.<br><br>A world where people can't eat red meat is a world where Maxwell Holt's portfolio grows substantially. I'm not saying that's a motive. I'm saying: follow the incentive. Always follow the incentive.</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — INTERVIEW — PRESENT DAY</div><span class="timestamp">05:20</span></div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(to camera, slower now)</div>
+      <div class="dialogue">Here's what keeps me up at night. Not the conspiracy. Conspiracies I can investigate. What keeps me up is the possibility that this isn't a conspiracy in the traditional sense — that there's no room where people sat down and said "let's release modified ticks in Missouri."<br><br>What if it's more diffuse than that? What if it's a man with a pathological fear of a thing, and a pathological need to control it, and more resources than any human being has ever had — and the research just…drifted? What if no one was supposed to get hurt?<br><br>That possibility doesn't comfort me. It terrifies me more.</div>
+    </div>
+
+    <div class="sound">SCORE: PIANO. SLOW. ALMOST MOURNFUL.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"Cal's veterinary license is suddenly under review. His former employer makes a call. And a source who was about to talk goes completely silent."</div>
+    </div>
+
+    <div class="cut">— END OF EPISODE SIX — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 07 ============================================================ -->
+<div class="episode" id="ep7">
+  <div class="ep-header">
+    <div class="ep-number">07</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Seven</div>
+      <div class="ep-title">THE<br>SILENCING</div>
+      <div class="ep-logline">"They came for his license. His source. His credibility. Everything except the truth."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>MORROW FARM / STATE CAPITOL</span></div>
+        <div class="ep-stat">TONE <span>PARANOIA / ESCALATION</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">This is the "walls closing in" episode. Every beat should tighten the vice. The viewer should feel trapped alongside Cal. The black SUV is never explained. Never. Let it sit as ambient threat throughout.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — INT. MORROW FARM CLINIC — MORNING</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">Cal opens his emails. Normal morning. Coffee. Then he stops. An email from the Missouri State Veterinary Licensing Board. Subject line: NOTICE OF LICENSE REVIEW — CASE 2024-MO-7741. He reads it. Reads it again.</div>
+
+    <div class="action">According to the notice, three anonymous complaints have been filed against his practice in the past thirty days. Allegations: improper record keeping. Failure to report notifiable disease events. Conduct unbecoming a licensed practitioner. The review hearing is in three weeks.</div>
+
+    <div class="action">Cal sets the coffee down. Looks out the window. On the road at the end of his driveway, a black SUV moves slowly past. Not unusual. He watches it anyway.</div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Seven — "The Silencing"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — INTERVIEW — PRESENT DAY</div><span class="timestamp">01:30</span></div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(controlled, but a new tension visible)</div>
+      <div class="dialogue">I've held a clean license for fourteen years. Never a complaint. Never a citation. In the thirty days after I began asking questions about the tick samples and the Project Silvergate funding structure — three anonymous complaints appear. Simultaneously.<br><br>I'm not a conspiracy theorist. I'm a scientist. Scientists understand that two events occurring in close temporal proximity is not itself evidence of causation. But I'm also a man who spent six years watching a pharmaceutical company manage inconvenient information. And I know what managed inconvenience looks like.</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM OFFICE — NIGHT</div><span class="timestamp">02:45</span></div>
+
+    <div class="action">Cal calls Elena Voss. Rings out. Tries again. Voicemail. Sends a text: "Call me when you can. Important." Three blue ticks appear immediately — she's read it. No response comes.</div>
+
+    <div class="action">He tries Dr. Osei. She answers but her voice is different — careful. Measured.</div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="parenthetical">(phone)</div>
+      <div class="dialogue">Cal. I need to tell you something. I received a call today from the university's general counsel. Someone — they wouldn't say who — has raised questions about my specimen handling protocols. They want to review my lab procedures.<br><br>I'm not going to stop. But I want you to know what's happening.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">Miriam, I'm sorry. This is because of me.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">DR. OSEI</div>
+      <div class="dialogue">Don't apologize. Just make sure what we found matters. Don't let them bury it, Cal.</div>
+    </div>
+
+    <div class="retention-note">At 4:00 — lower third: "Elena Voss has not been publicly heard from since this conversation. Her last known contact with Cal was a text message. It read: 'They know you talked to me.'" Hold 8 seconds. Do not explain.</div>
+
+    <div class="slug"><div class="slug-left">EXT. MORROW FARM — NIGHT</div><span class="timestamp">04:20</span></div>
+
+    <div class="action">Cal stands on his porch. The same position as Episode 1 — but everything has changed. He's looking at the same treeline. But now he knows what was at the edge of it. And he knows that whoever put it there knows who he is.</div>
+
+    <div class="action">His phone buzzes. An unknown number. He answers.</div>
+
+    <div class="dialogue-block">
+      <div class="character">UNKNOWN VOICE</div>
+      <div class="parenthetical">(distorted, quiet)</div>
+      <div class="dialogue">Dr. Morrow. You don't know me. I worked in the Silvergate project for fourteen months. I left six months ago. I have documentation.<br><br>I'll only do this once. Meet me or don't.</div>
+    </div>
+
+    <div class="action">The call ends. Cal stares at his phone. In the distance, on the road, headlights move slowly past his gate. Same black SUV. Different night.</div>
+
+    <div class="sound">SCORE: HEARTBEAT RHYTHM. LOW. THEN SILENCE. THEN BLACK.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"The whistleblower has documents. Real ones. What they show about Project Silvergate is worse than Cal imagined — and changes everything."</div>
+    </div>
+
+    <div class="cut">— END OF EPISODE SEVEN — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 08 ============================================================ -->
+<div class="episode" id="ep8">
+  <div class="ep-header">
+    <div class="ep-number">08</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Eight</div>
+      <div class="ep-title">PROOF</div>
+      <div class="ep-logline">"The whistleblower arrives. The documents are real. And Project Silvergate was never about eradicating ticks."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>RURAL MOTEL / MORROW FARM</span></div>
+        <div class="ep-stat">TONE <span>CLIMAX / REVELATION</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">This is the payoff episode. Seven episodes of building — this is where everything delivers. The document reveal must feel earned and visceral. The whistleblower should feel real. Their fear should be contagious. End with Cal going public — the point of no return.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — EXT. HIGHWAY 7 MOTEL — 2 AM</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">A motel off a Missouri state highway. The kind that still has a neon sign, half the letters dark. Cal's truck is the only vehicle in the lot. He sits inside it, lights off, watching the room door he was told to watch.</div>
+
+    <div class="action">At 2:07 AM, the door opens. A figure — DR. JAMES COLE, 41, former Silvergate project biochemist, visibly strung out from weeks of not sleeping, looks both ways before gesturing Cal inside.</div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Eight — "Proof"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">INT. MOTEL ROOM — CONTINUOUS</div><span class="timestamp">01:10</span></div>
+
+    <div class="action">The room is a document room. Printouts on the bed, on the desk, on the floor. Cole has been organizing this for days. He hands Cal a manila envelope — thick, heavy.</div>
+
+    <div class="dialogue-block">
+      <div class="character">COLE</div>
+      <div class="dialogue">Project Silvergate was commissioned in 2020. Official brief: develop a self-limiting tick vector to suppress Rhipicephalus microplus populations in sub-Saharan Africa. Standard stuff. Same language as the public-facing program.<br><br>By Q3 2021 the brief had changed. Internally. The new objective was enhancement — not suppression. Specifically: modifying the tick's salivary immunosuppressive proteins to increase pathogen transmission efficiency in mammalian hosts.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">That's what Osei found in the specimen.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">COLE</div>
+      <div class="dialogue">The modification makes the tick better at making the host sick. Faster. More reliable. It was framed internally as a "pathogen vector optimization" study. The official explanation was that we were trying to understand how to counter such modifications — defensive research.<br><br>I stopped believing that about eight months in.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">What changed your mind?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">COLE</div>
+      <div class="dialogue">We weren't countering anything. We were building delivery infrastructure. Specifically — the ventilated dispersal containers. Designed for field deployment. Rural agricultural zones, specifically cattle-dense regions.<br><br>Missouri. Texas. Oklahoma. Tennessee. The testing zones were all domestic. All farming communities. All within a hundred miles of processing infrastructure for the beef supply chain.</div>
+    </div>
+
+    <div class="action">Cal is still. The professional stillness of a man absorbing something that confirms the worst thing he suspected.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(very quiet)</div>
+      <div class="dialogue">They were targeting the beef supply.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">COLE</div>
+      <div class="dialogue">That's what the data suggests. I can't tell you that's what Maxwell Holt intended. I never met the man. I can tell you what the project was building, and I can tell you it was funded through his foundation's subsidiary chain, and I can give you the documents that prove it.<br><br>What you do with it is your problem.</div>
+    </div>
+
+    <div class="retention-note">At 4:30 — lower third: "The documents Cole provided were later authenticated by two independent forensic document examiners. Silvergate LLC was dissolved six weeks after this meeting." Hold 8 seconds.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM OFFICE — DAWN</div><span class="timestamp">05:00</span></div>
+
+    <div class="action">Cal sits at his desk. The documents spread before him. He has read everything. He picks up his phone. Calls a number he has been holding for weeks — a journalist, ANNA PARK, who covers agricultural policy for a national outlet and who he trusts.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">Anna. It's Cal Morrow. I have something. It's substantial.<br><br>I need you to listen to everything before you decide whether to run it. And Anna — once I tell you, I can't un-tell you. So make sure you want to know.</div>
+    </div>
+
+    <div class="action">A pause on the line.</div>
+
+    <div class="dialogue-block">
+      <div class="character">ANNA</div>
+      <div class="parenthetical">(phone)</div>
+      <div class="dialogue">Tell me.</div>
+    </div>
+
+    <div class="sound">SCORE: STRINGS. RISING. THEN HARD CUT TO BLACK.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"The story breaks nationally. Congressional hearings are called. Maxwell Holt walks into the room with twelve lawyers. And walks out a free man."</div>
+    </div>
+
+    <div class="cut">— END OF EPISODE EIGHT — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 09 ============================================================ -->
+<div class="episode" id="ep9">
+  <div class="ep-header">
+    <div class="ep-number">09</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Nine</div>
+      <div class="ep-title">JUSTICE —<br>ALMOST</div>
+      <div class="ep-logline">"The system had every tool it needed. It chose not to use them."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~8 MIN</span></div>
+        <div class="ep-stat">SETTING <span>WASHINGTON D.C. / FEDERAL COURTHOUSE</span></div>
+        <div class="ep-stat">TONE <span>EARNED HEARTBREAK / INSTITUTIONAL FAILURE</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">This is the episode that must make the audience feel something real. Not manufactured outrage — genuine weight. The system working as designed is more chilling than a villain. Holt barely appears. His absence is the point. Cal on those courthouse steps should be one of the most quietly devastating shots in the series.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — INT. CONGRESSIONAL HEARING ROOM — DAY</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">The architecture of institutional power: marble, mahogany, camera banks. A congressional subcommittee hearing on agricultural biosecurity. Five senators at the raised dais. Below them, at the witness table: CAL MORROW, in a suit that doesn't quite fit the way a scientist in a borrowed suit never quite fits.</div>
+
+    <div class="action">Across the aisle, flanked by a wall of attorneys: MAXWELL HOLT. Composed. Patrician. Faintly bored, which is itself a performance.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">I testified for four hours. I presented every document Cole had given me, every lab result from Dr. Osei, every financial record Elena had traced before she went silent. Four hours. They asked good questions. Some of them.<br><br>Then Maxwell Holt's attorneys made a motion. And the committee chair — who had received, I later learned, a six-figure donation from a Holt-aligned PAC the previous election cycle — sustained it. Ruled that key documents were inadmissible on chain-of-custody grounds. Cole's testimony was struck as potentially obtained through breach of NDA.<br><br>It was over in eleven minutes.</div>
+    </div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Nine — "Justice — Almost"</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">EXT. FEDERAL COURTHOUSE — STEPS — DAY</div><span class="timestamp">01:50</span></div>
+
+    <div class="action">Cal sits on the bottom step of the courthouse, alone. The motorcade has already gone — three black SUVs moving through iron gates with practiced efficiency, Maxwell Holt invisible behind tinted glass. Journalists mill on the upper steps, already filing their "no charges" stories. No one approaches Cal.</div>
+
+    <div class="action">He sits with his elbows on his knees. His suit jacket is slightly too warm for the day. He doesn't notice. He is looking at the space where the motorcade was.</div>
+
+    <div class="direction">HOLD FOR 12 SECONDS. DO NOT CUT. DO NOT SCORE. SILENCE AND AMBIENT CITY.</div>
+
+    <div class="slug"><div class="slug-left">INT. HEARING ROOM — FLASHBACK — EARLIER THAT DAY</div><span class="timestamp">02:50</span></div>
+
+    <div class="action">Cal at the witness table. A senator — SENATOR RUTH ALDRIDGE, 71, the only one who has read every page of every document — leans toward her microphone.</div>
+
+    <div class="dialogue-block">
+      <div class="character">SENATOR ALDRIDGE</div>
+      <div class="dialogue">Dr. Morrow. In your expert assessment — and I want this on the record — do you believe the animal deaths on those five Ozark County properties were caused by deliberately placed, genetically modified tick vectors?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(without hesitation)</div>
+      <div class="dialogue">Yes, Senator. I do.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">SENATOR ALDRIDGE</div>
+      <div class="dialogue">And do you believe the financial evidence presented today demonstrates a causal link between Project Silvergate and the Maxwell Holt Foundation?</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">The financial link is documented and unambiguous. Whether that constitutes legal liability is for this committee and the Department of Justice to determine. What I can say is that the money, the science, and the geography all point in the same direction.</div>
+    </div>
+
+    <div class="action">Aldridge nods. Writes something. Then the committee chair speaks — and the world Holt's legal team has already built around this moment closes like a trap.</div>
+
+    <div class="slug"><div class="slug-left">EXT. FEDERAL COURTHOUSE — STEPS — PRESENT</div><span class="timestamp">05:00</span></div>
+
+    <div class="action">Cal still sitting. ANNA PARK approaches, sits beside him. Says nothing for a moment.</div>
+
+    <div class="dialogue-block">
+      <div class="character">ANNA</div>
+      <div class="dialogue">DOJ won't move without the committee referral. And the committee won't refer without the documents. And the documents are inadmissible because—</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="dialogue">Because the system is working exactly the way it was built to work when someone with enough money needs it to.</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">ANNA</div>
+      <div class="dialogue">I'm going to keep writing. The story isn't over just because—</div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL</div>
+      <div class="parenthetical">(standing, straightening his jacket)</div>
+      <div class="dialogue">I know it isn't.<br><br>But today — today it feels like it is.</div>
+    </div>
+
+    <div class="action">He walks down the steps alone. Doesn't look back. The camera stays on the steps. On the space where Holt's motorcade was. On the city going about its business as if nothing happened, because for the city, nothing did.</div>
+
+    <div class="sound">SCORE: SINGLE PIANO NOTE. COLD. THEN SILENCE. THEN BLACK.</div>
+
+    <div class="next-hook">
+      <div class="next-hook-label">Next Episode Hook</div>
+      <div class="next-hook-text">"Six months later. Cal is back on his farm. Holt is on his estate — the same one where, as a boy, he learned to fear the thing he could never control. And nature, it turns out, doesn't care about legal immunity."</div>
+    </div>
+
+    <div class="cut">— END OF EPISODE NINE — CUT TO BLACK —</div>
+  </div>
+</div>
+
+<div class="ep-divider"></div>
+
+<!-- ============================================================ EP 10 ============================================================ -->
+<div class="episode" id="ep10">
+  <div class="ep-header">
+    <div class="ep-number">10</div>
+    <div class="ep-meta">
+      <div class="ep-label">Episode Ten — Finale</div>
+      <div class="ep-title">THE<br>BITE</div>
+      <div class="ep-logline">"He engineered the world's most efficient tick. And then he went home to his estate. And sat in the grass."</div>
+      <div class="ep-stats">
+        <div class="ep-stat">RUNTIME <span>~10 MIN</span></div>
+        <div class="ep-stat">SETTING <span>HOLT ESTATE / MORROW FARM</span></div>
+        <div class="ep-stat">TONE <span>POETIC JUSTICE / VIRAL ENDING</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="retention-note">This is the episode that lives in the comments section for weeks. Do not rush the ending. The final reveal of Holt's diagnosis must be held back until the last possible moment. The parallel cut between Cal rebuilding and Holt unraveling should feel inevitable — like watching a clock that was always going to strike. The final shot should be breathtaking in its quiet irony.</div>
+
+    <div class="slug"><div class="slug-left">COLD OPEN — EXT. MORROW FARM — DAWN — SIX MONTHS LATER</div><span class="timestamp">00:00</span></div>
+
+    <div class="action">The Ozark highlands in early autumn. Everything gold. Cal walks his fence line — the same fence line Merle walks, the same rhythm of a man in relationship with his land. He looks different. Something has settled. The fight is over but it did not break him.</div>
+
+    <div class="vo-block">
+      <div class="vo-label">CAL MORROW — V.O.</div>
+      <div class="vo-text">Six months after the hearing, my license review was quietly closed. No findings. No explanation. Ranger's stall still sits empty — I haven't been ready to fill it. Three of the five farms that lost animals have rebuilt their herds. Merle retired. Sold to a young family from Kansas City who want to raise heritage cattle.<br><br>The world mostly moved on. That's what the world does.</div>
+    </div>
+
+    <div class="title-card">
+      <div class="title-card-text">UNDER THE SKIN</div>
+      <div class="title-card-sub">Episode Ten — "The Bite" — Series Finale</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">EXT. HOLT PRIVATE ESTATE, CONNECTICUT — SAME MORNING</div><span class="timestamp">01:30</span></div>
+
+    <div class="action">A different world. The Holt estate: rolling lawns, stone terraces, the particular manicured beauty of old money. Morning light flooding everything golden. MAXWELL HOLT sits on the stone terrace in linen clothing, reading from a tablet, coffee untouched beside him. He is alone. He is always alone in the way that very powerful men are alone — surrounded by infrastructure, absent of company.</div>
+
+    <div class="action">The grass at the edge of the terrace is longer than it should be — the estate groundskeeper has been away. A detail no one noticed. A detail that mattered.</div>
+
+    <div class="direction">SLOW PUSH IN. HOLT READING. RELAXED. UNAWARE.</div>
+
+    <div class="direction">TILT DOWN. HIS FOREARM ON THE STONE ARMREST. THE GRASS NEARBY. AND THERE — BARELY VISIBLE — A DARK SHAPE. MOVING SLOWLY ACROSS HIS SKIN.</div>
+
+    <div class="slug"><div class="slug-left">INT. MORROW FARM CLINIC — INTERVIEW — PRESENT</div><span class="timestamp">03:00</span></div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(to camera, measured)</div>
+      <div class="dialogue">I heard about it the way everyone else did. A reporter called me for comment. Said that Maxwell Holt had been diagnosed with alpha-gal syndrome — tick-triggered red meat allergy. Permanent. No cure. His doctors confirmed it publicly because his dietary restrictions became visible enough at enough events that it became impossible to hide.<br><br>I didn't say anything when she told me. I just listened.</div>
+    </div>
+
+    <div class="direction">PAUSE. CAL LOOKS AWAY FROM CAMERA BRIEFLY.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="dialogue">She asked me if I thought it was ironic.<br><br>I told her I thought it was biology. Biology doesn't read legal briefs. It doesn't recognize foundations or subsidiaries or NDA agreements. It doesn't care how many lawyers you have.<br><br>A tick bit Maxwell Holt. And now Maxwell Holt cannot eat red meat. For the rest of his life.</div>
+    </div>
+
+    <div class="action">Cal is quiet for a moment. Something moves across his face — not satisfaction, exactly. Something older and stranger than satisfaction.</div>
+
+    <div class="dialogue-block">
+      <div class="character">CAL MORROW</div>
+      <div class="parenthetical">(almost to himself)</div>
+      <div class="dialogue">I've thought a lot about what justice looks like when the institutions that are supposed to deliver it choose not to. I don't have a clean answer. I don't think there is one.<br><br>What I know is this: I came out here to take care of animals and the people who depend on them. That's what I'm going to keep doing. One farm at a time. One animal at a time.<br><br>I'll leave the rest to things beyond my control.</div>
+    </div>
+
+    <div class="slug"><div class="slug-left">EXT. HOLT ESTATE — TERRACE — THAT MORNING (RETURNS)</div><span class="timestamp">06:30</span></div>
+
+    <div class="action">We return to Holt on the terrace. He has moved his arm. The tick is gone — he never felt it. He sets down his tablet. Picks up his coffee. Takes a sip. Looks out over his immaculate rolling estate, the same land his family has owned for a hundred years, the same land where a boy was once covered in ticks and couldn't sleep for a week.</div>
+
+    <div class="action">He looks content. Untouched. Untouchable.</div>
+
+    <div class="action">He does not know yet.</div>
+
+    <div class="direction">HOLD ON HOLT'S FACE. GOLDEN MORNING LIGHT. SLOW PULL BACK UNTIL HE IS SMALL IN THE FRAME — A FIGURE IN A LANDSCAPE THAT DOES NOT BELONG TO HIM THE WAY HE BELIEVES IT DOES.</div>
+
+    <div class="slug"><div class="slug-left">EXT. MORROW FARM — FINAL SHOT</div><span class="timestamp">08:20</span></div>
+
+    <div class="action">Cal at his fence line. The Ozark autumn. He rests his arms on the top rail and looks out at his pasture — the field where Ranger died, where this all began. It is full of light now. He breathes. Stays there a long time.</div>
+
+    <div class="action">Then he turns, walks back toward the clinic, back toward the work.</div>
+
+    <div class="action">The camera stays on the field. Empty. Golden. Still.<br><br>In the grass, barely visible: a tick. Moving slowly through the blades. Patient. Unhurried. Going wherever it was always going.</div>
+
+    <div class="sound">SCORE: FULL THEME. SLOW BUILD. RESOLVE INTO SILENCE.</div>
+
+    <div class="title-card" style="margin-top:30px; background: rgba(0,0,0,0.7);">
+      <div class="title-card-text" style="font-size: 18px; letter-spacing:0.4em;">MAXWELL HOLT WAS DIAGNOSED WITH ALPHA-GAL SYNDROME IN THE AUTUMN OF 2024.</div>
+      <div class="title-card-sub" style="margin-top: 10px; font-family: var(--body); font-style: italic; font-size: 15px; color: rgba(242,232,213,0.65);">He can no longer eat red meat. His doctors say the condition is permanent.<br>Project Silvergate was dissolved. No charges were ever filed.<br>Cal Morrow still practices veterinary medicine in the Ozark Highlands.</div>
+    </div>
+
+    <div class="sound">SILENCE. BLACK.</div>
+
+    <div class="cut">— END OF SERIES — BLOODLINE DISPATCH —</div>
+  </div>
+</div>
+
+</div><!-- end episodes -->
+
+<div class="footer">
+  <div class="footer-logo">BLOODLINE DISPATCH</div>
+  <div class="footer-note">FICTIONAL SERIES — ALL CHARACTERS AND EVENTS ARE INVENTED — FOR CREATIVE DEVELOPMENT ONLY</div>
+</div>
+
+
+
+</body></html>

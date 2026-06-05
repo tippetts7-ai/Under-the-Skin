@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNDER THE SKIN — YouTube Series Bible & Scene 1 Script</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blood: #8B0000;
+    --rust: #C0392B;
+    --amber: #D4870A;
+    --parchment: #F2E8D5;
+    --dark: #0D0D0D;
+    --mid: #1A1510;
+    --muted: #5C4A3A;
+    --green: #2D5016;
+    --green-bright: #4A7C20;
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    --body: 'Crimson Pro', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--parchment);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.35;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(139,0,0,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(45,80,22,0.1) 0%, transparent 50%),
+      linear-gradient(180deg, #0D0D0D 0%, #110D08 100%);
+    border-bottom: 1px solid rgba(139,0,0,0.3);
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rust), var(--amber), var(--rust), transparent);
+    animation: scanline 3s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+
+  .channel-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(72px, 14vw, 160px);
+    letter-spacing: 0.05em;
+    color: var(--parchment);
+    line-height: 0.9;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+    text-shadow: 0 0 80px rgba(139,0,0,0.4);
+  }
+
+  .hero-subtitle {
+    font-family: var(--display);
+    font-size: clamp(18px, 3vw, 28px);
+    letter-spacing: 0.3em;
+    color: var(--rust);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-desc {
+    font-family: var(--body);
+    font-style: italic;
+    font-size: clamp(16px, 2vw, 22px);
+    color: rgba(242,232,213,0.7);
+    max-width: 600px;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+
+  .meta-item {
+    text-align: center;
+  }
+
+  .meta-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .meta-value {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Layout */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Sections */
+  .section {
+    padding: 80px 0;
+    border-bottom: 1px solid rgba(92,74,58,0.2);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--rust), transparent);
+    opacity: 0.4;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(36px, 6vw, 64px);
+    letter-spacing: 0.05em;
+    color: var(--parchment);
+    line-height: 1;
+    margin-bottom: 40px;
+  }
+
+  /* Channel info box */
+  .info-box {
+    background: linear-gradient(135deg, rgba(139,0,0,0.08), rgba(45,80,22,0.05));
+    border: 1px solid rgba(139,0,0,0.25);
+    border-left: 3px solid var(--rust);
+    padding: 30px 36px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .info-box::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--dark);
+    padding: 0 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--rust);
+    text-transform: uppercase;
+  }
+
+  .channel-name {
+    font-family: var(--display);
+    font-size: 48px;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  .channel-description {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--parchment);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+
+  .channel-tagline {
+    font-style: italic;
+    color: rgba(242,232,213,0.6);
+    font-size: 16px;
+  }
+
+  /* Scene cards */
+  .scene-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .scene-card {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: start;
+    gap: 20px;
+    padding: 24px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(92,74,58,0.15);
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scene-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--rust);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: bottom;
+  }
+
+  .scene-card:hover {
+    background: rgba(139,0,0,0.06);
+    border-color: rgba(139,0,0,0.3);
+  }
+
+  .scene-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .scene-num {
+    font-family: var(--display);
+    font-size: 42px;
+    color: rgba(92,74,58,0.4);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .scene-card:hover .scene-num {
+    color: var(--rust);
+  }
+
+  .scene-content {}
+
+  .scene-title {
+    font-family: var(--display);
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    color: var(--parchment);
+    margin-bottom: 6px;
+  }
+
+  .scene-hook {
+    font-size: 15px;
+    color: rgba(242,232,213,0.65);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+
+  .scene-retention {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+  }
+
+  .scene-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    padding: 4px 10px;
+    border: 1px solid;
+    text-transform: uppercase;
+    white-space: nowrap;
+    align-self: start;
+  }
+
+  .badge-hook { color: var(--rust); border-color: var(--rust); }
+  .badge-build { color: var(--amber); border-color: var(--amber); }
+  .badge-reveal { color: var(--green-bright); border-color: var(--green-bright); }
+  .badge-climax { color: #E74C3C; border-color: #E74C3C; }
+  .badge-twist { color: #9B59B6; border-color: #9B59B6; }
+
+  /* Script section */
+  .script-wrapper {
+    background: linear-gradient(180deg, rgba(13,13,13,0) 0%, rgba(20,14,8,0.5) 100%);
+    border: 1px solid rgba(92,74,58,0.3);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .script-header {
+    background: linear-gradient(90deg, rgba(139,0,0,0.2), rgba(45,80,22,0.1));
+    border-bottom: 1px solid rgba(139,0,0,0.3);
+    padding: 24px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .script-header-title {
+    font-family: var(--display);
+    font-size: 28px;
+    letter-spacing: 0.1em;
+    color: var(--parchment);
+  }
+
+  .script-stats {
+    display: flex;
+    gap: 24px;
+  }
+
+  .stat {
+    text-align: right;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .stat-val {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--amber);
+  }
+
+  .script-body {
+    padding: 40px 36px;
+  }
+
+  /* Script elements */
+  .slug {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(212,135,10,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .slug::before {
+    content: '▶';
+    font-size: 8px;
+    opacity: 0.6;
+  }
+
+  .slug:first-child { margin-top: 0; }
+
+  .action {
+    color: rgba(242,232,213,0.55);
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 16px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(92,74,58,0.3);
+  }
+
+  .direction {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--green-bright);
+    text-transform: uppercase;
+    margin: 20px 0 6px;
+  }
+
+  .dialogue-block {
+    margin: 20px 0;
+    padding: 20px 24px;
+    border-left: 3px solid rgba(139,0,0,0.4);
+    background: rgba(139,0,0,0.04);
+  }
+
+  .character {
+    font-family: var(--display);
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    margin-bottom: 6px;
+  }
+
+  .parenthetical {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+
+  .dialogue {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--parchment);
+  }
+
+  .vo-block {
+    margin: 20px 0;
+    padding: 20px 24px;
+    border-left: 3px solid rgba(212,135,10,0.5);
+    background: rgba(212,135,10,0.04);
+  }
+
+  .vo-label {
+    font-family: var(--display);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  .vo-text {
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.65;
+    color: rgba(242,232,213,0.9);
+  }
+
+  .title-card {
+    margin: 30px 0;
+    padding: 24px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(139,0,0,0.3);
+    text-align: center;
+  }
+
+  .title-card-text {
+    font-family: var(--display);
+    font-size: 32px;
+    letter-spacing: 0.25em;
+    color: var(--parchment);
+    text-shadow: 0 0 30px rgba(139,0,0,0.6);
+  }
+
+  .title-card-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .retention-note {
+    margin: 24px 0;
+    padding: 14px 18px;
+    background: rgba(74,124,32,0.08);
+    border: 1px dashed rgba(74,124,32,0.3);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green-bright);
+    letter-spacing: 0.1em;
+  }
+
+  .retention-note::before {
+    content: '◆ RETENTION NOTE: ';
+    opacity: 0.7;
+  }
+
+  .sound {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #7F8C8D;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 10px 0;
+    padding: 6px 12px;
+    background: rgba(127,140,141,0.05);
+    display: inline-block;
+  }
+
+  .sound::before { content: '♪ '; }
+
+  .cut {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: rgba(92,74,58,0.5);
+    text-align: right;
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+
+  .timestamp {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    float: right;
+    opacity: 0.6;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 60px 40px;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(139,0,0,0.05));
+    border-top: 1px solid rgba(92,74,58,0.2);
+  }
+
+  .footer-logo {
+    font-family: var(--display);
+    font-size: 32px;
+    letter-spacing: 0.2em;
+    color: rgba(92,74,58,0.4);
+    margin-bottom: 10px;
+  }
+
+  .footer-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(92,74,58,0.4);
+    letter-spacing: 0.15em;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--rust); }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 20px; }
+    .scene-card { grid-template-columns: 40px 1fr; }
+    .scene-badge { display: none; }
+    .script-body { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="channel-tag">YouTube Series Bible — Confidential</div>
+  <div class="hero-title">UNDER<br>THE SKIN</div>
+  <div class="hero-subtitle">A Fictional Investigative Series</div>
+  <div class="hero-desc">"What if the cure was always the conspiracy?"</div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Scenes</span>
+      <span class="meta-value">10</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Genre</span>
+      <span class="meta-value">Investigative Thriller</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Scene 1 Runtime</span>
+      <span class="meta-value">~8 MIN</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Format</span>
+      <span class="meta-value">Cinematic Doc-Style</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- CHANNEL -->
+  <div class="section">
+    <div class="section-label">Channel Identity</div>
+    <div class="section-title">THE CHANNEL</div>
+
+    <div class="info-box" data-label="Channel Name">
+      <div class="channel-name">BLOODLINE DISPATCH</div>
+      <div class="channel-description">"BLOODLINE DISPATCH — Where the truth bites back."</div>
+      <div class="channel-tagline">Ten-word description: <em>One vet. One billionaire. One tick. Zero coincidences.</em></div>
+    </div>
+
+    <p style="color:rgba(242,232,213,0.65); font-style:italic;">
+      Bloodline Dispatch sits at the intersection of investigative journalism and cinematic storytelling — a channel for audiences who distrust official narratives and hunger for deep-dive, character-driven exposés. The name carries a double meaning: the bloodline of corruption traced through powerful institutions, and the literal bloodsucking parasite at the center of the story. Every episode is shot and scored to feel like a prestige documentary, not a reaction video.
+    </p>
+  </div>
+
+  <!-- SCENE BREAKDOWN -->
+  <div class="section">
+    <div class="section-label">Series Structure</div>
+    <div class="section-title">10 SCENES<br>BUILT FOR CLICKS</div>
+
+    <div class="scene-grid">
+
+      <div class="scene-card">
+        <div class="scene-num">01</div>
+        <div class="scene-content">
+          <div class="scene-title">THE DYING FIELD</div>
+          <div class="scene-hook">Dr. Cal Morrow finds his prize stallion dead at dawn. Three more animals are down by sunset. Something is in the grass — and it's spreading.</div>
+          <div class="scene-retention">↳ HOOK: Opens mid-crisis. Viewer is invested before title card drops.</div>
+        </div>
+        <div class="scene-badge badge-hook">HOOK</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">02</div>
+        <div class="scene-content">
+          <div class="scene-title">THE MAN WHO LEFT THE LAB</div>
+          <div class="scene-hook">Cal's past is revealed — a senior researcher at pharma giant Velacor who walked away after witnessing data suppression. He knows what cover-ups look like.</div>
+          <div class="scene-retention">↳ HOOK: Backstory drop creates instant credibility & sympathy. Viewer roots for him.</div>
+        </div>
+        <div class="scene-badge badge-build">BUILD</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">03</div>
+        <div class="scene-content">
+          <div class="scene-title">THE TICK THAT SHOULDN'T EXIST</div>
+          <div class="scene-hook">Lab results show the parasite is genetically anomalous. A university entomologist says off-camera: "This isn't natural selection. Someone made this."</div>
+          <div class="scene-retention">↳ HOOK: First expert bombshell. Screenshot-worthy quote drives shares.</div>
+        </div>
+        <div class="scene-badge badge-reveal">REVEAL</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">04</div>
+        <div class="scene-content">
+          <div class="scene-title">BOXES IN THE GRASS</div>
+          <div class="scene-hook">A neighboring rancher shows Cal a corrugated box with ventilation holes found near his tree line. Inside: hundreds of ticks. No markings. No origin.</div>
+          <div class="scene-retention">↳ HOOK: Physical evidence moment. Triggers the "is this real?" response.</div>
+        </div>
+        <div class="scene-badge badge-reveal">REVEAL</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">05</div>
+        <div class="scene-content">
+          <div class="scene-title">FOLLOW THE MONEY</div>
+          <div class="scene-hook">Cal traces grant records to a biotech firm — formerly called Oxitec, now rebranded. The foundation funding it is tied to a billionaire who has publicly said the world must stop eating meat.</div>
+          <div class="scene-retention">↳ HOOK: The "gotcha" research scene. Viewer feels like a co-investigator.</div>
+        </div>
+        <div class="scene-badge badge-build">BUILD</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">06</div>
+        <div class="scene-content">
+          <div class="scene-title">THE PHILANTHROPIST'S FEAR</div>
+          <div class="scene-hook">A leaked childhood interview surfaces. Billionaire Maxwell Holt, as a 12-year-old, describes being covered in ticks at his family's estate — a trauma he has never spoken of since.</div>
+          <div class="scene-retention">↳ HOOK: Irony and psychological depth. Humanizes the villain. Audience can't look away.</div>
+        </div>
+        <div class="scene-badge badge-build">BUILD</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">07</div>
+        <div class="scene-content">
+          <div class="scene-title">THE SILENCING</div>
+          <div class="scene-hook">Cal's veterinary license is suddenly under review. His former pharma employer re-emerges. A source goes dark. The walls are closing in.</div>
+          <div class="scene-retention">↳ HOOK: Stakes escalate. "They're coming for him" energy drives binge-watching.</div>
+        </div>
+        <div class="scene-badge badge-climax">CLIMAX</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">08</div>
+        <div class="scene-content">
+          <div class="scene-title">PROOF</div>
+          <div class="scene-hook">Cal obtains internal documents proving the biotech program was expanded beyond cattle ticks — a second project, unauthorized, buried in a subsidiary's budget line. He goes public.</div>
+          <div class="scene-retention">↳ HOOK: The climax release. Everything the audience has been building toward.</div>
+        </div>
+        <div class="scene-badge badge-climax">CLIMAX</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">09</div>
+        <div class="scene-content">
+          <div class="scene-title">JUSTICE — ALMOST</div>
+          <div class="scene-hook">Congressional hearings. Holt's legal team buries the case. He walks. Cal watches from a courthouse bench as the man responsible drives away in a motorcade.</div>
+          <div class="scene-retention">↳ HOOK: Earned heartbreak. Audience outrage drives comments and shares.</div>
+        </div>
+        <div class="scene-badge badge-twist">TWIST</div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-num">10</div>
+        <div class="scene-content">
+          <div class="scene-title">THE BITE</div>
+          <div class="scene-hook">Six months later. Holt is photographed at his private estate — the same land where his childhood trauma began. He is diagnosed with alpha-gal syndrome. He can no longer eat meat. His doctors say it's permanent.</div>
+          <div class="scene-retention">↳ HOOK: Poetic justice ending. Designed for viral clipping and comment explosion.</div>
+        </div>
+        <div class="scene-badge badge-twist">TWIST</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <div class="section">
+    <div class="section-label">Full Script</div>
+    <div class="section-title">SCENE ONE<br>"THE DYING FIELD"</div>
+
+    <div class="script-wrapper">
+      <div class="script-header">
+        <div class="script-header-title">UNDER THE SKIN — EP. 01</div>
+        <div class="script-stats">
+          <div class="stat">
+            <span class="stat-label">Approx. Runtime</span>
+            <span class="stat-val">~8:00</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Setting</span>
+            <span class="stat-val">Ozark Highlands, MO</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Tone</span>
+            <span class="stat-val">Cinematic / Investigative</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="script-body">
+
+        <div class="retention-note">Cold open. No title card. No introduction. Throw the viewer into the scene mid-crisis. First 30 seconds must be visually arresting. Do not explain. Make them ask questions.</div>
+
+        <!-- COLD OPEN -->
+        <div class="slug">COLD OPEN — EXT. MORROW FARM, OZARK HIGHLANDS — PRE-DAWN<span class="timestamp">00:00</span></div>
+
+        <div class="action">
+          BLACK SCREEN. The sound of a horse breathing — slow, labored, wrong. Then silence.<br><br>
+          FADE IN: A field at 4 AM. The Missouri sky is the color of a bruise. Fireflies have been replaced by something else — the soft blue glow of a phone flashlight cutting through knee-high grass.<br><br>
+          We follow the light. Boots pressing into dew-soaked soil. Each step deliberate, searching.
+        </div>
+
+        <div class="sound">AMBIENT: INSECT DRONE, LOW AND CONSTANT. SOMETHING IN THE GRASS.</div>
+
+        <div class="action">
+          The light finds it. A horse — 1,400 pounds of quarter horse — lying on its side. Not sleeping. The flank barely moving. Labored, shallow breaths.<br><br>
+          A hand enters frame. Calloused. Steady. It touches the horse's jaw, gently, the way someone touches a thing they love and are afraid to lose.
+        </div>
+
+        <div class="vo-block">
+          <div class="vo-label">CAL MORROW — V.O.</div>
+          <div class="vo-text">
+            His name was Ranger. Fourteen years old. Champion cutting horse, two county fairs, never sick a day in his life. I'd delivered him myself — pulled him into the world on a January night just like this one.<br><br>
+            I knew when I saw him that morning that I wasn't looking at colic. I wasn't looking at anything I'd treated before. I was looking at something new.
+          </div>
+        </div>
+
+        <div class="action">
+          CUT TO: DR. CALHOUN "CAL" MORROW, 48. Face like a topographical map of everything he's been through. Weathered but not broken. He crouches beside Ranger, pulls a small headlamp from his jacket, begins examining the horse's neck, inner ears, legs.
+        </div>
+
+        <div class="direction">CLOSE ON: Cal's gloved fingers parting the hair at Ranger's neck. He stops.</div>
+
+        <div class="action">
+          He leans closer. Then slower, he exhales through his nose. Not panic. Recognition. He's seen something he knows he shouldn't be seeing here.
+        </div>
+
+        <div class="direction">EXTREME CLOSE UP: A cluster of ticks — dark, swollen, motionless. Dozens. Embedded in a ring pattern that is not random.</div>
+
+        <div class="retention-note">Do NOT explain the ring pattern. Let it sit. The audience will pause and rewatch this moment. Let the visual do the work.</div>
+
+        <div class="title-card">
+          <div class="title-card-text">UNDER THE SKIN</div>
+          <div class="title-card-sub">Episode One — "The Dying Field"</div>
+        </div>
+
+        <!-- ACT ONE -->
+        <div class="slug">ACT ONE — EXT./INT. MORROW FARM — MORNING<span class="timestamp">01:20</span></div>
+
+        <div class="action">
+          TIME CUT: Golden hour. The farm materializes in daylight. Rolling pasture, white-fenced paddocks, a modest clinic building attached to a converted barn. A hand-painted sign: MORROW LARGE ANIMAL VETERINARY — EST. 2011.<br><br>
+          Ranger has been moved to the clinic. He's alive, barely. Cal moves with focused efficiency — IV line, blood draw, vitals log. A young vet tech, BRIANNA, 24, hovers nearby.
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">BRIANNA</div>
+          <div class="parenthetical">(watching the blood draw)</div>
+          <div class="dialogue">
+            You want me to call Dr. Hensley at the university extension?
+          </div>
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">CAL</div>
+          <div class="parenthetical">(not looking up)</div>
+          <div class="dialogue">
+            Not yet. I want my own numbers first before anyone else gets in this room.
+          </div>
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">BRIANNA</div>
+          <div class="dialogue">
+            The Delacroix farm called. They've got two heifers showing similar symptoms. Fever, lethargy, won't eat.
+          </div>
+        </div>
+
+        <div class="action">
+          Cal stops. Sets down the vial. Stares at the wall for exactly three seconds. This is a man who calculates before he reacts.
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">CAL</div>
+          <div class="parenthetical">(quietly)</div>
+          <div class="dialogue">
+            How far is Delacroix from here?
+          </div>
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">BRIANNA</div>
+          <div class="dialogue">
+            Four miles. Maybe five.
+          </div>
+        </div>
+
+        <div class="action">
+          Cal writes something on his notepad. His face betrays nothing. But the pen presses hard enough to tear the paper.
+        </div>
+
+        <div class="vo-block">
+          <div class="vo-label">CAL MORROW — V.O.</div>
+          <div class="vo-text">
+            Here's what they don't teach you in veterinary school: the difference between an outbreak and an epidemic is usually just the number of phone calls you get before noon. By 10 AM that day, I had four.
+          </div>
+        </div>
+
+        <!-- MONTAGE -->
+        <div class="slug">RAPID MONTAGE — MULTIPLE FARMS, OZARK REGION — DAY ONE<span class="timestamp">02:45</span></div>
+
+        <div class="direction">VISUAL SEQUENCE — HAND-HELD, DOCUMENTARY STYLE. EACH SHOT: 3-4 SECONDS.</div>
+
+        <div class="action">
+          — A goat lying in a feed pen, glassy-eyed.<br>
+          — An elderly farmer, MERLE, standing at a fence line, hat in hand, watching his cattle bunch at the far end of the pasture like they're afraid of something closer.<br>
+          — Cal's truck, dust plume behind it, pushing down a gravel road at speed.<br>
+          — A dead dog near a tree line. Owner crouched beside it, not understanding.<br>
+          — Cal's hands, latex-gloved, parting animal fur. Finding what he already expects to find.<br>
+          — A map on his dashboard, red dots appearing in marker. Four farms. Five miles radius. The dots form a shape. Cal stares at it. Doesn't like what he sees.
+        </div>
+
+        <div class="sound">SCORE: LOW DRONE BUILDS. SINGLE SUSTAINED CELLO NOTE.</div>
+
+        <!-- INTERVIEW SEGMENT -->
+        <div class="slug">INT. MORROW FARM CLINIC — INTERVIEW SETUP — LATER THAT DAY<span class="timestamp">04:00</span></div>
+
+        <div class="direction">DIRECT TO CAMERA. CAL SEATED. CLINICAL BACKGROUND SLIGHTLY SOFT. THIS IS THE "NOW" TIMELINE.</div>
+
+        <div class="dialogue-block">
+          <div class="character">CAL MORROW</div>
+          <div class="parenthetical">(deliberate, controlled)</div>
+          <div class="dialogue">
+            Fourteen years I've worked this region. I've seen Lyme clusters. I've seen anaplasmosis roll through a herd. I've seen what happens when tick populations spike after a mild winter — and it looks nothing like what I saw that day.<br><br>
+            What I saw looked systematic. The distribution pattern across those five farms didn't follow any natural gradient I'd ever studied. Ticks don't respect property lines, but they also don't show up in uniform density across multiple unconnected properties simultaneously. That's — that's not ecology. That's placement.
+          </div>
+        </div>
+
+        <div class="action">
+          He lets that word sit. He's a scientist. He chose it carefully.
+        </div>
+
+        <div class="retention-note">At 4:00 — drop a lower-third graphic: "Dr. Cal Morrow has reported his findings to three separate state agencies. None have responded." This creates institutional distrust and viewer outrage. Keep it on screen for 5 seconds.</div>
+
+        <!-- RANGER SCENE -->
+        <div class="slug">INT. MORROW FARM CLINIC — LATE EVENING — DAY ONE<span class="timestamp">05:10</span></div>
+
+        <div class="action">
+          Cal sits on an overturned bucket beside Ranger's stall. The horse's breathing has steadied but he's not out of danger. Cal holds the blood panel results in his hands. He's been reading them for a long time.<br><br>
+          Brianna appears in the doorway.
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">BRIANNA</div>
+          <div class="dialogue">
+            You should eat something.
+          </div>
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">CAL</div>
+          <div class="parenthetical">(not looking up)</div>
+          <div class="dialogue">
+            Babesiosis markers are all wrong. It reads like babesiosis but it's not presenting the way babesiosis presents. The pathogen response is —<br>
+            <span style="font-style:italic">(pauses)</span><br>
+            It's like something that's been modified to be harder to identify.
+          </div>
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">BRIANNA</div>
+          <div class="parenthetical">(a beat)</div>
+          <div class="dialogue">
+            Modified how?
+          </div>
+        </div>
+
+        <div class="dialogue-block">
+          <div class="character">CAL</div>
+          <div class="parenthetical">(finally looks up)</div>
+          <div class="dialogue">
+            That's what I intend to find out.
+          </div>
+        </div>
+
+        <div class="sound">SCORE: SINGLE PIANO NOTE. HELD.</div>
+
+        <!-- FINAL BEAT -->
+        <div class="slug">EXT. MORROW FARM — NIGHT — END OF DAY ONE<span class="timestamp">06:45</span></div>
+
+        <div class="action">
+          Cal stands on his porch. A glass of water in his hand, untouched. He's staring at the tree line — the dark edge of his property where his field meets the forest.<br><br>
+          He pulls out his phone. Scrolls. Finds an old news article: a biotech grant announcement. A foundation name he recognizes. A familiar face in the photo.<br><br>
+          He reads it once. Then again.
+        </div>
+
+        <div class="vo-block">
+          <div class="vo-label">CAL MORROW — V.O.</div>
+          <div class="vo-text">
+            I'd spent six years at Velacor Pharmaceuticals before I walked away. I know what institutional money looks like. I know what research looks like when it's meant to solve a problem — and I know what it looks like when the research IS the problem.<br><br>
+            That night, standing on my porch in the dark, I found a thread. I didn't know yet how far it would unravel. I didn't know what it would cost me.<br><br>
+            But I pulled it.
+          </div>
+        </div>
+
+        <div class="direction">SLOW PUSH IN ON CAL'S FACE. THE TREE LINE BEHIND HIM, OUT OF FOCUS. SOMETHING IN THE GRASS CATCHES THE PORCH LIGHT — BRIEF, BARELY VISIBLE. A BOX. PARTIALLY HIDDEN BY BRUSH.</div>
+
+        <div class="action">
+          Cal doesn't see it yet.<br><br>
+          But we do.
+        </div>
+
+        <div class="sound">SCORE: DRONE RISES. HARD CUT TO BLACK.</div>
+
+        <div class="title-card" style="margin-top:30px;">
+          <div class="title-card-text" style="font-size:20px; letter-spacing:0.4em; color:var(--rust);">NEXT EPISODE</div>
+          <div class="title-card-sub" style="margin-top:10px; font-style:italic; font-family:var(--body); font-size:16px; color:rgba(242,232,213,0.7);">"He left one of the most powerful pharmaceutical companies in the world. They said it was voluntary. It wasn't."</div>
+        </div>
+
+        <div class="retention-note">End screen hook MUST appear at 7:50. Never wait until 8:00. Tease Episode 2 with a 10-second visual of Cal's Velacor ID badge — then a slow zoom on a redacted document with the foundation's name partially visible. Say nothing. Let the image speak.</div>
+
+        <div class="cut">— END OF SCENE ONE — CUT TO BLACK —</div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-logo">BLOODLINE DISPATCH</div>
+  <div class="footer-note">SERIES BIBLE — FICTIONAL — FOR CREATIVE DEVELOPMENT ONLY</div>
+</div>
+
+</body>
+</html>
