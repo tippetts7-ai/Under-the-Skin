@@ -2,7 +2,7 @@
 
 ### *A Novel*
 
-**Travis Tippetts**
+**Tripp Wire**
 
 &nbsp;
 
@@ -20,7 +20,7 @@
 
 ---
 
-Copyright © 2026 Travis Tippetts
+Copyright © 2026 Tripp Wire
 
 All rights reserved.
 
@@ -1664,4 +1664,4 @@ The grass was just grass.
 
 ---
 
-*Travis Tippetts, 2026*
+*Tripp Wire, 2026*
